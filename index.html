@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <a href="https://www.artists.com"></a>
+  <title>گالری نقاشان</title>
+  <style>
+    body {
+    background-image: url("kargah/paper-fibers.png");
+    background-color: #a0753cde; /* مکمل بافت */
+    background-repeat: repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    font-family: vazirmatn;
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+     color: #693c18; /* متن خوانا */
+    }
+
+    .title-h1{
+      font-size: 40px;
+      font-family: Times;
+    }
+
+    
+    .header {
+      padding: 1px;
+      background: #ffffffe5;
+      text-align: center;
+      color: #693c18;
+      margin-bottom: 30px;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 90px;
+      flex-wrap: wrap;
+    }
+
+    .artist-card {
+      font-family: vazirmatn;
+      background: rgba(255, 255, 255, 0.836);
+      border-radius: 10px;
+      box-shadow: 0 0 10px #5f4625de;
+      width: 250px;
+      border-radius: 80px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .artist-card:hover {
+      transform: scale(1.05);
+    }
+
+    .artist-card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .artist-card h3 {
+      margin: 10px 0;
+    }
+
+    .section {
+      display: none;
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.932);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #614015;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .artworks img {
+      align-items: center;
+      width: 45%;
+      margin: 10px 2.5%;
+      border-radius: 10px;
+      box-shadow: 0 0 8px #aaa;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 15px;
+      background-color: #693f23;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background-color: #c75e5e;
+    
+    }
+
+    /*ونگوگ*/
+    .p-van{
+      color: rgb(34, 34, 131);
+      text-align: right;
+      text-align: justify;
+    }
+    .van-h2{
+      color: rgb(28, 112, 207);
+      text-align: center;
+    }
+    .back-button-van{
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 15px;
+      background-color: #232a69;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .back-button-van:hover {
+      background-color: #abcaf8;
+    }
+    .van-img{
+      align-items: center;
+    }
+    .van-img h4{
+      color: rgb(34, 34, 131);
+    }
+
+    /*پیکاسو*/
+    .p-pica{
+      color: rgb(128, 92, 25);
+      text-align: right;
+      text-align: justify;
+    }
+    .pica-h2{
+      color: rgb(221, 169, 0);
+    }
+    .pica-img h4{
+      color: rgb(128, 92, 25);
+    }
+    .back-button-pica{
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 15px;
+      background-color: rgb(128, 92, 25);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .back-button-pica:hover {
+      background-color: #c7a25e;
+    
+    }
+
+    /*داوینچی*/
+    .davin-h2{
+      color: rgb(201, 78, 78);
+    }
+    .davin-img{
+      align-items: center;
+    }
+    .p-davin{
+      text-align: right;
+      text-align: justify;
+      color: rgb(116, 30, 30);
+    }
+    .back-button-davin{
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 15px;
+      background-color:rgb(116, 30, 30);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .back-button-davin:hover {
+      background-color: #d88585;
+    }
+
+    /*دالی*/
+    .p-dali{
+      text-align: right;
+      text-align: justify;
+      color: #3f6137;
+    }
+    .dali-h2{
+     color:#74aa66;
+    }
+    .back-button-dali{
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 15px;
+      background-color: #3f6137;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .back-button-dali:hover {
+      background-color: #74aa66;
+    }
+    .dali-img h4{
+      color: #3f6137 ;
+    }
+  </style>
+</head>
+<body>
+  <!-- هدر -->
+  <header class="header" id="header">
+    <h1 class="title-h1"> ART gallery</h1>
+      <div class="paragraph">
+        <p>
+        به گالری هنر خوش آمدید!<br/>
+        در این وب‌سایت با زندگی و آثار چهار نقاش تأثیرگذار تاریخ آشنا می‌شوید.
+       </p>
+    </div>
+  </header>
+
+  <!-- گالری -->
+  <section class="artists-cat">
+
+    <div class="gallery" id="mainGallery">
+      <div class="artist-card" id="card-vangogh" onclick="showSection('vangogh','card-vangogh')">
+        <img src="kargah/download.jfif" alt="ون گوگ" />
+        <h3> ونسان ونگوگ <br> (Vincent van Gogh)</h3>
+      </div>
+
+      <div class="artist-card" id="card-picasso" onclick="showSection('picasso','card-picasso')">
+        <img src="kargah/Picasso.jfif" alt="پابلو پیکاسو" />
+        <h3>پابلو پیکاسو<br> (Pablo Picasso)</h3>
+      </div>
+
+      <div class="artist-card" id="card-davinci" onclick="showSection('davinci','card-davinci')">
+        <img src="kargah/davinci2.jfif" alt="داوینچی" />
+        <h3> لئوناردو داوینچی <br> (Leonardo da Vinci) </h3>
+      </div>
+
+      <div class="artist-card" id="card-dali" onclick="showSection('dali','card-dali')">
+        <img src="kargah/dali.jfif" alt="سالوادور دالی" />
+        <h3>سالوادور دالی <br> (Salvador Dalí) </h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- بخش‌های توضیحات -->
+  <section class="category">
+    <!-- ون گوگ -->
+    <div class="section" id="vangogh" >
+      <h2 class="van-h2"> ونسان ونگوگ (Vincent van Gogh) </h2>
+        <div class="p-van">
+              <p>
+              ونسان ونگوگ یک نقاش پست‌امپرسیونیست هلندی بود که به‌رغم زندگی کوتاه و پررنجش،
+              به یکی از تأثیرگذارترین هنرمندان تاریخ هنر غرب تبدیل شد.
+            </p>
+
+            <p>
+              او در ۳۰ مارس ۱۸۵۳ در روستای زوندرت در هلند به دنیا آمد. خانواده‌اش مذهبی و از طبقه متوسط بودند. پدرش کشیش پروتستان بود.
+              ونگوگ در ابتدا به‌عنوان دلال هنری کار می‌کرد،
+                اما پس از مدتی از این حرفه دل‌زده شد و دوره‌ای را به عنوان مبلغ مذهبی در منطقه‌ای فقیرنشین در بلژیک گذراند
+              . پس از مدتی، تصمیم گرفت تمام وقت خود را وقف هنر کند.
+            </p>
+
+            <p>
+              ونگوگ زندگی عاطفی و روانی بسیار ناآرامی داشت. او از اختلالات روانی رنج می‌برد،
+              دچار افسردگی شدید بود و دوره‌هایی از روان‌پریشی را تجربه می‌کرد.
+              مشهورترین حادثه زندگی‌اش بریدن گوش خودش در سال ۱۸۸۸ در شهر آرل فرانسه است، پس از مشاجره با نقاش هم‌دوره‌اش پل گوگن.
+              او در طول زندگی‌اش بیش از ۲۱۰۰ اثر هنری خلق کرد، از جمله حدود ۸۶۰ نقاشی رنگ‌روغن که بسیاری از آن‌ها در آخرین دو سال عمرش خلق شدند.
+              سبک خاص او با ضربات قلموی پرانرژی، رنگ‌های زنده و بیان احساسات درونی شناخته می‌شود.
+            </p>
+
+            <p>
+              از مهم‌ترین آثار او می‌توان به این موارد اشاره کرد:
+              <ul>
+                <li>شب پرستاره (The Starry Night) </li>
+                <li> گل‌های آفتابگردان (Sunflowers) </li>
+                <li> اتاق خواب در آرل (Bedroom in Arles) </li>
+                <li>  خودنگاره‌ها (Self-Portraits) </li>
+              </ul>
+            </p>
+
+            <p>
+              ونگوگ در طول عمرش تقریباً ناشناخته و فقیر باقی ماند و تنها یکی از نقاشی‌هایش را در زمان حیات فروخت. 
+              او در ۲۹ ژوئیه ۱۸۹۰ در سن ۳۷ سالگی در اثر شلیک گلوله‌ای که خودش به شکم خود زد، درگذشت.
+              امروزه، ونگوگ یکی از مشهورترین و محبوب‌ترین نقاشان جهان است و آثارش در بزرگ‌ترین موزه‌ها نگهداری می‌شود، از جمله موزه ونگوگ در آمستردام.
+            </p>
+          </div>
+      <div class="artworks">
+          <div class="van-img">
+            <h4>شب پرستاره: </h4>
+            <img src="kargah/starry night.jfif" alt="شب پرستاره" />
+            <h4>آفتابگردان:</h4>
+            <img src="kargah/sunflowers in vase.jfif" alt="آفتابگردان" />
+          </div>
+      </div>
+      <a href="#" class="back-button-van" onclick="goBack(event)">← بازگشت</a>
+    </div>
+
+
+    <!-- پیکاسو -->
+    <div class="section" id="picasso" >
+      <h2 class="pica-h2" >پابلو پیکاسو (Pablo Picasso)</h2>
+      <div class="p-pica">
+          <p>
+          پابلو پیکاسو یکی از برجسته‌ترین نقاشان و مجسمه‌سازان اسپانیایی قرن بیستم بود که به عنوان بنیان‌گذار سبک کوبیسم شناخته می‌شود.
+           او در ۲۵ اکتبر ۱۸۸۱ در مالاگا، اسپانیا به دنیا آمد. 
+           پیکاسو از کودکی استعداد هنری برجسته‌ای داشت و در سنین نوجوانی آموزش رسمی نقاشی دید.
+          </p>
+          
+          <p>
+            زندگی هنری او پر از تغییرات سبک و خلاقیت‌های نوآورانه بود؛
+             از دوره آبی و دوره رز گرفته تا ظهور کوبیسم که تاثیر عمیقی بر هنر مدرن گذاشت.
+             پیکاسو آثار متعددی خلق کرد که از میان آن‌ها می‌توان به «دوشیزگان آوینیون» و «گرنیکا» اشاره کرد؛
+             اثری ضدجنگ که یکی از مهم‌ترین نقاشی‌های قرن بیستم محسوب می‌شود.
+          </p>
+          
+          <p>
+            او در طول عمرش بیش از ۱۳۰۰۰ اثر هنری از جمله نقاشی، مجسمه‌سازی، چاپ و سرامیک تولید کرد.
+            پیکاسو تا آخر عمرش به فعالیت هنری ادامه داد و در ۸ آوریل ۱۹۷۳ در سن ۹۱ سالگی در فرانسه درگذشت. 
+            امروز او به عنوان یکی از تأثیرگذارترین و نوآورترین هنرمندان تاریخ هنر جهان شناخته می‌شود.
+          </p>
+
+          <p>
+             <ul>
+                <li> دوشیزگان آوینیون (Les Demoiselles d'Avignon) </li>
+                <li> گرنیکا (Guernica) </li>
+                <li> زن گریزان (The Weeping Woman) </li>
+                <li> پیکاسو با کلاه (Self-Portrait with a Hat) </li>
+                <li> دختر روی توپ (Girl on a Ball) </li>
+             </ul>
+          </p>
+      </div>
+      
+        <div class="artworks">
+            <div class="pica-img">
+              <h4>گرینگا:</h4>
+              <img src="kargah/Guernica.jfif" alt="گرنیکا" />
+              <h4>زن گریان:</h4>
+              <img src="kargah/images.jpg" alt="زن گریان" />
+            </div>
+        </div>
+        <a href="#" class="back-button-pica" onclick="goBack(event)">← بازگشت</a>
+   </div>
+
+    <!-- داوینچی -->
+    <div class="section" id="davinci">
+      <h2 class="davin-h2">لئوناردو داوینچی  (Leonardo da Vinci)</h2>
+      <div class="p-davin">
+              <p>
+               لئوناردو داوینچی هنرمند،
+               دانشمند، مخترع و نابغه‌ی دوران رنسانس ایتالیا بود که تأثیر عظیمی بر هنر، علوم و مهندسی گذاشت.
+               او در ۱۵ آوریل ۱۴۵۲ در شهر وینچی در ایتالیا به دنیا آمد.
+               از کودکی علاقه شدیدی به طبیعت، طراحی، آناتومی و مکانیک داشت.
+              </p>
+              
+              <p>
+                داوینچی آموزش هنری خود را نزد آندره‌آ دل وروکیو آغاز کرد و به‌زودی در نقاشی،
+                 مجسمه‌سازی، طراحی، کالبدشناسی، ریاضیات و مهندسی سرآمد شد. او به جای خلق تعداد زیاد آثار،
+                  با وسواس زیاد روی پروژه‌هایش کار می‌کرد و برخی از آن‌ها را ناتمام گذاشت.
+              </p>
+
+              <p>
+                او با استفاده از تکنیک‌های نوین، درک بالای آناتومی و ترکیب علم و هنر، 
+                آثار شاهکاری خلق کرد. معروف‌ترین اثر او "مونالیزا
+                " (لبخند ژوکوند) است که به‌خاطر نگاه مرموز و تکنیک‌های فوق‌العاده‌اش از مشهورترین نقاشی‌های جهان به شمار می‌رود. 
+                نقاشی دیواری "شام آخر" نیز شاهکار بزرگ اوست که صحنه آخرین وعده‌ی غذایی مسیح با حواریون را نمایش می‌دهد.
+              </p>
+
+              <p>
+                از دیگر علاقه‌مندی‌های داوینچی می‌توان به طراحی ماشین‌های پرنده، سلاح‌ها، ابزار مهندسی، 
+                و یادداشت‌های علمی گسترده اشاره کرد که امروزه در دفاتر او باقی مانده‌اند.
+              </p>
+              
+              <p>
+                او در ۲ مه ۱۵۱۹ در فرانسه درگذشت.
+                 لئوناردو داوینچی نمادی از انسان ایده‌آل رنسانس است که علم و هنر را به شکلی بی‌نظیر در هم آمیخت.
+              </p>
+
+              <p>
+                <ul>
+                  <li>مونالیزا (Mona Lisa) </li>
+                  <li>شام آخر (The Last Supper)</li>
+                  <li>مرد ویترووین (Vitruvian Man)</li>
+                  <li>بانوی صخره‌ها (The Virgin of the Rocks)</li>
+                </ul>
+              </p>
+      </div>
+          <div class="artworks">
+            <div class="davin-img">
+              <h4>مونالیزا:</h4>
+              <img src="kargah/Monalisa.jfif" alt="مونالیزا" />
+              <h4>شام آخر:</h4>
+              <img src="kargah/download 2.jfif" alt="شام آخر" />
+            </div>
+          </div>
+          <a href="#" class="back-button-davin" onclick="goBack(event)">← بازگشت</a>
+      </div>
+      
+    
+
+    <!-- سالوادور دالی -->
+    <div class="section" id="dali">
+      <h2 class="dali-h2" >سالوادور دالی (Salvador Dalí) </h2>
+        <div class="p-dali">
+           <p>
+              سالوادور دالی نقاش، طراح و هنرمند سوررئالیست اسپانیایی بود که به‌خاطر تخیلات فراواقع‌گرا،
+               سبک عجیب و چهره‌ی خاصش شهرت جهانی دارد. او در ۱۱ مه ۱۹۰۴
+                در شهر فیگراس در اسپانیا به دنیا آمد. از همان کودکی خلاقیت بی‌حد و تخیلات عجیبی از خود نشان داد.
+           </p>
+
+           <p>
+                دالی تحصیلات هنری خود را در مادرید آغاز کرد و به زودی با هنرمندان سوررئالیست 
+                در پاریس آشنا شد. آثار او معمولاً شامل مناظر رؤیایی، فرم‌های مایع و اشیاء نمادین هستند. از ویژگی‌های
+                اصلی نقاشی‌های دالی، تکنیک دقیق کلاسیک همراه با محتوای غیرمنطقی و رؤیاگونه است.
+           </p>
+
+           <p>
+            مشهورترین اثر او "پایداری حافظه" است که ساعت‌های ذوب‌شونده را
+             در منظره‌ای بی‌زمان نمایش می‌دهد و به نمادی از زمان و 
+             ذهن انسان تبدیل شده است. او در طراحی صحنه، مجسمه‌سازی، فیلم‌سازی و حتی مد هم فعالیت داشت و 
+             شخصیتی نمایشی، عجیب و خودنمایانه داشت که در شهرتش نقش زیادی ایفا کرد.
+           </p>
+
+           <p>
+            او در ۲۳ ژانویه ۱۹۸۹ در سن ۸۴ سالگی در زادگاهش درگذشت. موزه دالی 
+            در فیگراس امروزه محل دفن و نمایش آثار اوست. دالی یکی
+             از برجسته‌ترین چهره‌های هنر سوررئال و فرهنگ قرن بیستم به شمار می‌رود.
+           </p>
+
+           <p>
+            <ul>
+              <li>پایداری حافظه (The Persistence of Memory)</li>
+              <li> صورت آفریقایی (The Face of War)</li>
+              <li>خودنگاره‌های دالی</li>
+            </ul>
+           </p>
+          </div>
+          <div class="artworks">
+            <div class="dali-img">
+              <h4>پایداری حافظه:</h4>
+                <img src="kargah/the-persistence-of-memory-by-salvador-dali.webp" alt="پایداری حافظه"/>
+                <h4>پرتره دالی:</h4>
+                <img src="kargah/download (1).jfif" alt="پرتره دالی" />
+            </div>
+        </div>
+          
+      <a href="#" class="back-button-dali" onclick="goBack(event)">← بازگشت</a>
+    </div>
+  </section>
+
+
+  <script>
+    let lastClickedCardId = null;
+
+function showSection(sectionId, cardId) {
+  lastClickedCardId = cardId; // ذخیره کارت کلیک‌شده
+
+  document.getElementById("header").style.display = "none";
+  document.querySelectorAll(".section").forEach((sec) => sec.classList.remove("active"));
+
+  const target = document.getElementById(sectionId);
+  if (target) {
+    target.classList.add("active");
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+
+function goBack(event) {
+  event.preventDefault();
+  //نمایش هدر
+  document.getElementById("header").style.display = "block";
+  //مخفی کردم بیوگرافی ها
+  document.querySelectorAll(".section").forEach((sec) => sec.classList.remove("active"));
+
+  // اسکرول به کارت آخر کلیک‌شده
+  setTimeout(() => {
+    if (lastClickedCardId) {
+    const card = document.getElementById(lastClickedCardId);
+    if (card) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+ }, 100)
+}
+  
+</script>
+
+</body>
+</html>
